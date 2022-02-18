@@ -1,0 +1,151 @@
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkslateblue;
+  font-size: 1.3rem;
+}
+
+/* Content */
+.content {
+  background-color: lightgrey;
+  width: 768px;
+  max-width: 768px;
+  padding: 3rem;
+  box-shadow: 2px 2px 3px gray;
+  border-radius: 1rem;
+}
+
+.content__title {
+  margin: 1rem;
+  text-align: center;
+}
+
+/* Search */
+.search {
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+
+.search__input {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* Result */
+.result {
+  position: relative;
+  background-color: purple;
+  border-radius: 0.3rem;
+  box-shadow: 2px 2px 3px gray;
+  color: white;
+  padding: 2.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "name name"
+    "avatar bio";
+}
+
+.result__toggle-favorite {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem;
+}
+
+.result__name {
+  grid-area: name;
+  margin: 0.4rem 0;
+}
+
+.result__avatar {
+  grid-area: avatar;
+  max-width: 6rem;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.result__bio {
+  grid-area: bio;
+  margin: 0;
+}
+
+.result__blog {
+  grid-area: blog;
+  color: goldenrod;
+}
+
+.result__error {
+  padding: 0.3rem;
+  background-color: tomato;
+  color: white;
+  text-align: center;
+  border: 1px solid red;
+}
+
+/* Favorites */
+.favorites {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+
+.favorite {
+  transition: transform 0.3s ease-out;
+}
+
+.favorite__avatar {
+  height: 5rem;
+  margin: 0.3rem;
+}
+
+.favorite--selected {
+  transform: scale(1.3);
+}
+
+/* Transitions */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
