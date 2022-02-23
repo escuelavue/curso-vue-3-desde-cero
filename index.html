@@ -21,7 +21,7 @@
             <h1 class="content__title">{{ message }}</h1>
 
             <!-- Search -->
-            <form class="search">
+            <form class="search" v-on:submit.prevent="doSearch">
                 <input type="text" class="search__input" required placeholder="Search GitHub users">
                 <input type="submit" class="search__submit" value="Search">
             </form>
