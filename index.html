@@ -27,8 +27,18 @@
             </form>
 
             <!-- Result -->
+            <div class="result" v-if="result">
+                <h2 class="result__name">Juan Andrés Núñez</h2>
+                <img src="https://avatars.githubusercontent.com/u/8166774?v=4" alt="" class="result__avatar">
+                <p class="result__bio">Especialista en JavaScript y Vue.js. Formador profesional de desarrolladores/as
+                    Web. Practicante de estoicismo.
+                    <br>
+                    <a href="http://www.wmedia.es" class="result__blog">http://www.wmedia.es</a>
+                </p>
+            </div>
+
             <!-- Error -->
-            <div class="result__error"></div>
+            <div class="result__error" v-if="error">Error found</div>
         </article>
     </div>
     <script src="js/main.js"></script>
