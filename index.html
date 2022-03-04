@@ -28,6 +28,7 @@
 
             <!-- Result -->
             <div class="result" v-if="result">
+                <a href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
                 <h2 class="result__name">{{ result.name }}</h2>
                 <img v-bind:src="result.avatar_url" :alt="result.name" class="result__avatar">
                 <p class="result__bio">{{ result.bio }} <br>
@@ -41,7 +42,7 @@
     </div>
     <script src="js/main.js"></script>
     <script>
-        const mountedApp = app.mount("#app")
+
     </script>
 </body>
 
