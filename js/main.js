@@ -14,6 +14,9 @@ const app = Vue.createApp({
   computed: {
     isFavorite() {
       return this.favorites.has(this.result.id)
+    },
+    allFavorites() {
+      return Array.from(this.favorites.values())
     }
   },
   methods: {

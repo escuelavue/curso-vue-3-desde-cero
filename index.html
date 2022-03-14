@@ -14,6 +14,11 @@
     <div id="app">
         <!-- Favorites -->
         <div class="favorites">
+            <div class="favorite" v-for="favorite in allFavorites">
+                <a :href="favorite.blog" target="_blank">
+                    <img :src="favorite.avatar_url" :alt="favorite.name" class="favorite__avatar">
+                </a>
+            </div>
         </div>
 
         <!-- Content -->
