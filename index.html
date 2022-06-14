@@ -14,11 +14,13 @@
     <div id="app">
         <!-- Favorites -->
         <div class="favorites">
-            <div class="favorite" v-for="favorite in allFavorites">
-                <a @click.prevent="showFavorite(favorite)" href="#" target="_blank">
-                    <img :src="favorite.avatar_url" :alt="favorite.name" class="favorite__avatar">
-                </a>
-            </div>
+            <transition-group name="list">
+                <div class="favorite" v-for="favorite in allFavorites" :key="favorite.id">
+                    <a @click.prevent="showFavorite(favorite)" href="#" target="_blank">
+                        <img :src="favorite.avatar_url" :alt="favorite.name" class="favorite__avatar">
+                    </a>
+                </div>
+            </transition-group>
         </div>
 
         <!-- Content -->
@@ -32,16 +34,18 @@
             </form>
 
             <!-- Result -->
-            <div class="result" v-if="result">
-                <a v-if="isFavorite" href="#" class="result__toggle-favorite" @click="removeFavorite">Remove Favorite
-                    ⭐️</a>
-                <a v-else href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
-                <h2 class="result__name">{{ result.name }}</h2>
-                <img v-bind:src="result.avatar_url" :alt="result.name" class="result__avatar">
-                <p class="result__bio">{{ result.bio }} <br>
-                    <a v-bind:href="result.blog" target="_blank" class="result__blog">{{ result.blog }}</a>
-                </p>
-            </div>
+            <Transition>
+                <div class="result" v-if="result">
+                    <a v-if="isFavorite" href="#" class="result__toggle-favorite" @click="removeFavorite">Remove Favorite
+                        ⭐️</a>
+                    <a v-else href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
+                    <h2 class="result__name">{{ result.name }}</h2>
+                    <img v-bind:src="result.avatar_url" :alt="result.name" class="result__avatar">
+                    <p class="result__bio">{{ result.bio }} <br>
+                        <a v-bind:href="result.blog" target="_blank" class="result__blog">{{ result.blog }}</a>
+                    </p>
+                </div>
+            </Transition>
 
             <!-- Error -->
             <div class="result__error" v-if="error">{{ error }}</div>
