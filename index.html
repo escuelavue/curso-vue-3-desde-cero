@@ -15,7 +15,10 @@
         <!-- Favorites -->
         <div class="favorites">
             <transition-group name="list">
-                <div class="favorite" v-for="favorite in allFavorites" :key="favorite.id">
+                <div 
+                    class="favorite"
+                    :class="{'favorite--selected': checkFavorite(favorite.login)}"
+                    v-for="favorite in allFavorites" :key="favorite.id">
                     <a @click.prevent="showFavorite(favorite)" href="#" target="_blank">
                         <img :src="favorite.avatar_url" :alt="favorite.name" class="favorite__avatar">
                     </a>
