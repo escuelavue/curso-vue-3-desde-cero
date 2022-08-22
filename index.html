@@ -38,16 +38,12 @@
 
             <!-- Result -->
             <Transition>
-                <div class="result" v-if="result">
-                    <a v-if="isFavorite" href="#" class="result__toggle-favorite" @click="removeFavorite">Remove Favorite
-                        ⭐️</a>
-                    <a v-else href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
-                    <h2 class="result__name">{{ result.name }}</h2>
-                    <img v-bind:src="result.avatar_url" :alt="result.name" class="result__avatar">
-                    <p class="result__bio">{{ result.bio }} <br>
-                        <a v-bind:href="result.blog" target="_blank" class="result__blog">{{ result.blog }}</a>
-                    </p>
-                </div>
+                <app-profile 
+                    v-if="result" 
+                    :result="result"
+                    :is-favorite="isFavorite" 
+                    @add-favorite="addFavorite"
+                    @remove-favorite="removeFavorite" />
             </Transition>
 
             <!-- Error -->
@@ -55,8 +51,9 @@
         </article>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/components/AppProfile.js"></script>
     <script>
-
+        const mountedApp = app.mount('#app');
     </script>
 </body>
 
